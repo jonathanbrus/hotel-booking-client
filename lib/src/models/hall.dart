@@ -7,11 +7,11 @@ class Hall {
   final String detailAddress;
   final double distance;
   final String venueType;
-  final _MainHall mainHall;
-  final _DiningHall diningHall;
-  final _Rooms rooms;
-  final _DecorAndRitual decorAndRitual;
-  final _Parking parking;
+  final MainHall mainHall;
+  final DiningHall diningHall;
+  // final Rooms rooms;
+  final DecorAndRitual decorAndRitual;
+  final Parking parking;
   final double raing;
 
   Hall({
@@ -25,35 +25,33 @@ class Hall {
     required this.venueType,
     required this.mainHall,
     required this.diningHall,
-    required this.rooms,
+    // required this.rooms,
     required this.decorAndRitual,
     required this.parking,
     required this.raing,
   });
 }
 
-class _MainHall {
+class MainHall {
   final bool ac;
   final int seatingCapacity;
   final int floatingCapacity;
 
-  _MainHall({
+  MainHall({
     required this.ac,
     required this.seatingCapacity,
     required this.floatingCapacity,
   });
 }
 
-class _DiningHall {
+class DiningHall {
   final bool ac;
   final int seatingCapacity;
-  final String hallLevel;
   final _FoodService foodAndService;
 
-  _DiningHall({
+  DiningHall({
     required this.ac,
     required this.seatingCapacity,
-    required this.hallLevel,
     required this.foodAndService,
   });
 }
@@ -70,34 +68,34 @@ class _FoodService {
   });
 }
 
-class _Rooms {
-  final bool ac;
-  final int noOfRooms;
-  final int noOfAcRooms;
+// class Rooms {
+//   final bool ac;
+//   final int noOfRooms;
+//   final int noOfAcRooms;
 
-  _Rooms({
-    required this.ac,
-    required this.noOfRooms,
-    required this.noOfAcRooms,
-  });
-}
+//   Rooms({
+//     required this.ac,
+//     required this.noOfRooms,
+//     required this.noOfAcRooms,
+//   });
+// }
 
-class _DecorAndRitual {
+class DecorAndRitual {
   final bool allowOtherVendor;
   final bool allowHomam;
 
-  _DecorAndRitual({
+  DecorAndRitual({
     required this.allowOtherVendor,
     required this.allowHomam,
   });
 }
 
-class _Parking {
+class Parking {
   final bool available;
   final int car;
   final int bike;
 
-  _Parking({
+  Parking({
     required this.available,
     required this.car,
     required this.bike,

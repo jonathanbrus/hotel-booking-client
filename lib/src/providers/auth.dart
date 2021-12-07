@@ -1,25 +1,45 @@
 import 'package:flutter/material.dart';
 
+import '../services/http_client.dart';
+
 enum AuthStatus { aunthenticated, unAunthenticated }
 
 class AuthProvider with ChangeNotifier {
-  final AuthStatus _status = AuthStatus.unAunthenticated;
-  final String _token = "";
+  AuthStatus _status = AuthStatus.unAunthenticated;
+  String _token = "";
 
   AuthStatus get status => _status;
 
   String get token => _token;
 
-  Future<void> sendOtp({required String phone}) async {}
+  void setStatus(AuthStatus status) {
+    _status = status;
 
-  Future<void> verify({required String otp}) async {}
+    notifyListeners();
+  }
 
-  Future<void> createUser({
-    required String name,
-    required String email,
-    String? state,
-    String? city,
-  }) async {}
+  Future<void> sendOtp({required String phone}) async {
+    try {
+      final data = await postHttp(path: "/otp");
+
+      print(data);
+    } catch (e) {
+      print("from otp catch $e");
+    }
+  }
+
+  Future<void> verify({required String otp, Function? setUser}) async {
+    try {
+      final data = await getHttp(path: "/otp");
+
+      print(data);
+
+      _token = data["token"];
+      setUser!(data["user"]);
+    } catch (e) {
+      print("from otp catch $e");
+    }
+  }
 
   Future<void> logOut() async {}
 }
